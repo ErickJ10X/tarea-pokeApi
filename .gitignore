@@ -1,0 +1,139 @@
+# Ignorar archivos del sistema operativo
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Ignorar archivos de editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings
+.classpath
+
+# Ignorar archivos generados
+.env
+.env.local
+.env.*.local
+*.log
+
+# Ignorar directorio de caché
+.cache/
+.phpunit.result.cache
+
+# Ignorar dependencias de Composer
+/vendor/
+composer.lock
+
+# Ignorar node_modules (si usas npm/webpack)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Ignorar directorio de almacenamiento temporal
+/tmp/
+/temp/
+*.tmp
+
+# Ignorar directorios de sesiones PHP
+/sessions/
+*.sess
+
+# Ignorar archivos de prueba local
+phpunit.xml
+.phpunit.result.cache
+
+# Ignorar archivos de configuración local
+config/local.php
+config/database.local.php
+
+# Ignorar resultados de JMeter
+results.jtl
+jmeter.log
+/report/
+
+# Ignorar archivos de base de datos
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+
+# Ignorar archivos de backup
+*.bak
+*.backup
+*.swp
+*~
+
+# Ignorar directorios de compilación
+/build/
+/dist/
+
+# Ignorar archivos de Docker
+.dockerignore
+docker-compose.override.yml
+
+# Ignorar archivos de prueba
+/tests/coverage/
+/tests/reports/
+
+# Ignorar directorios personalizados
+/uploads/
+/downloads/
+/media/
+/files/
+
+# Ignorar archivos IDE específicos
+*.iml
+.gradle
+.gradletasknamecache
+out/
+
+# Ignorar archivos Windows
+desktop.ini
+.~*
+
+# Ignorar archivos Mac
+._*
+
+# Ignorar archivos de configuración PHP
+php.ini
+php-cli.ini
+
+# Ignorar archivos generados por herramientas
+.phpdoc.cache
+.php_cs.cache
+
+# Ignorar directorios de compilación Node
+dist/
+build/
+
+# Ignorar archivos secretos
+.env.production
+secrets/
+.secret
+private_key.*
+
+# Ignorar archivos temporales de desarrollo
+dev/
+.dev/
+debug/
+
+# Ignorar archivos de documentación temporal
+doc/temp/
+doc/*.pdf
+
+# Ignorar configuración de proyecto
+.vscode-settings.json
+settings.json
+launch.json
+

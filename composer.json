@@ -1,0 +1,28 @@
+{
+  "name": "tarea9/pokeapi",
+  "description": "Tarea9 - Pokédex API REST con PokeAPI integrada",
+  "type": "project",
+  "require": {
+    "php": ">=8.4",
+    "ext-pdo": "*",
+    "phpdocumentor/shim": "^3.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "Core/",
+      "App\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "phpdocumentor/shim": true
+    }
+  },
+  "scripts": {
+    "docs": "phpdoc -d src/ -t doc/ --title 'Docker MVC Template - PokeAPI Integration'",
+    "docs:core": "phpdoc -d Core/ -t doc/core --title 'Docker MVC Template - Core'",
+    "docs:all": "@docs && @docs:core"
+  }
+}
+
+

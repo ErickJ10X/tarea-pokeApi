@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Docker MVC Template - PokeAPI Load Test" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL</stringProp>
+            <stringProp name="Argument.value">http://localhost:8000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="POKEMON_IDS" elementType="Argument">
+            <stringProp name="Argument.name">POKEMON_IDS</stringProp>
+            <stringProp name="Argument.value">1,25,39,54,58,74,81,92,104,109</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <!-- Concurrency Thread Group -->
+      <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="Concurrency Thread Group - 200 usuarios" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">-1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">200</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">600</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.threads.concurrency.RampUpController" guiclass="com.blazemeter.jmeter.threads.concurrency.RampUpControllerGui" testclass="com.blazemeter.jmeter.threads.concurrency.RampUpController" testname="Ramp-Up Controller" enabled="true">
+          <stringProp name="RampUpController.ramp_up_time">600</stringProp>
+          <stringProp name="RampUpController.steps">10</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.scheduler">true</stringProp>
+        <stringProp name="ThreadGroup.duration">900</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+      </com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup>
+      <hashTree>
+        <!-- Configuración:
+          Target Concurrency: 200 usuarios
+          Ramp Up Time: 600 segundos (10 minutos)
+          Ramp-Up Steps Count: 10 usuarios
+          Hold Target Rate Time: 300 segundos (5 minutos)
+        -->
+
+        <!-- Sampler 1: Página de inicio -->
+        <HTTPSampler guiclass="HttpTestSampleGui" testclass="HTTPSampler" testname="GET /pokemons" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="page" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="HTTPArgument.name">page</stringProp>
+                <stringProp name="HTTPArgument.value">1</stringProp>
+                <stringProp name="HTTPArgument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8000</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/pokemons</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSampler>
+        <hashTree>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="Ver Resultados en Tabla" enabled="true">
+            <elementProp name="ResultCollector.sample_listeners" elementType="Collection" guiclass="CollectionPanel" testclass="Collection" testname="Collection" enabled="true">
+            </elementProp>
+            <stringProp name="ResultCollector.value_type">all</stringProp>
+            <stringProp name="filename">results-table.jtl</stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Sampler 2: Buscar Pokémon -->
+        <HTTPSampler guiclass="HttpTestSampleGui" testclass="HTTPSampler" testname="GET /pokemon/search" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="q" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="HTTPArgument.name">q</stringProp>
+                <stringProp name="HTTPArgument.value">pikachu</stringProp>
+                <stringProp name="HTTPArgument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8000</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/pokemon/search</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSampler>
+        <hashTree/>
+
+        <!-- Sampler 3: Filtrar por tipo -->
+        <HTTPSampler guiclass="HttpTestSampleGui" testclass="HTTPSampler" testname="GET /pokemon/filter-by-type" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="type" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="HTTPArgument.name">type</stringProp>
+                <stringProp name="HTTPArgument.value">fire</stringProp>
+                <stringProp name="HTTPArgument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8000</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/pokemon/filter-by-type</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSampler>
+        <hashTree/>
+
+        <!-- Sampler 4: Obtener Pokémon por ID -->
+        <HTTPSampler guiclass="HttpTestSampleGui" testclass="HTTPSampler" testname="GET /pokemon (by ID)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="HTTPArgument.name">id</stringProp>
+                <stringProp name="HTTPArgument.value">25</stringProp>
+                <stringProp name="HTTPArgument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8000</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/pokemon</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSampler>
+        <hashTree/>
+
+        <!-- Sampler 5: API Tests -->
+        <HTTPSampler guiclass="HttpTestSampleGui" testclass="HTTPSampler" testname="GET /api/tests/get-pokemon-by-id (JSON)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="HTTPArgument.name">id</stringProp>
+                <stringProp name="HTTPArgument.value">1</stringProp>
+                <stringProp name="HTTPArgument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8000</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/tests/get-pokemon-by-id</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSampler>
+        <hashTree/>
+
+        <!-- Response Assertion -->
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion - HTTP 200" enabled="true">
+          <collectionProp name="Asserions">
+            <elementProp name="" elementType="ResponseAssertion">
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+              <stringProp name="Assertion.test_strings">200</stringProp>
+              <stringProp name="Assertion.test_type">2</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+            </elementProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_strings">200</stringProp>
+          <stringProp name="Assertion.test_type">2</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+        </ResponseAssertion>
+        <hashTree/>
+
+        <!-- Backend Listener para métricas -->
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Resumen Estadístico" enabled="true">
+          <elementProp name="ResultCollector.sample_listeners" elementType="Collection" guiclass="CollectionPanel" testclass="Collection" testname="Collection" enabled="true">
+          </elementProp>
+          <stringProp name="ResultCollector.value_type">all</stringProp>
+          <stringProp name="filename">results-stats.jtl</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
+
