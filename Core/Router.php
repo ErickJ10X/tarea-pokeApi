@@ -10,6 +10,46 @@ class Router
 {
     protected $routesList = [];
 
+    // Singleton instance to allow other parts of the app access to the router
+    private static $instance = null;
+
+    public function __construct()
+    {
+        // Set this instance as the global instance when constructed
+        self::$instance = $this;
+    }
+
+    /**
+     * Set the router instance explicitly (in case index.php wants to do it)
+     *
+     * @param Router $router
+     * @return void
+     */
+    public static function setInstance(Router $router): void
+    {
+        self::$instance = $router;
+    }
+
+    /**
+     * Get the current router instance
+     *
+     * @return Router|null
+     */
+    public static function getInstance(): ?Router
+    {
+        return self::$instance;
+    }
+
+    /**
+     * Obtener la lista de rutas (útil para generar un navegador de pruebas)
+     *
+     * @return array Lista de rutas con keys: uri, controller, method, middleware
+     */
+    public function getRoutesList(): array
+    {
+        return $this->routesList;
+    }
+
     public function add($method, $uri, $controller)
     {
         $this->routesList[] = [

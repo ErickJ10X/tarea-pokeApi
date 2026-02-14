@@ -15,6 +15,8 @@ use Core\Session;
                            class="<?= is_current_url('/pokemons') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Pokémon</a>
                         <a href="/api/tests"
                            class="<?= is_current_url('/api/tests') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Pruebas API</a>
+                        <a href="/test-navigator"
+                           class="<?= is_current_url('/test-navigator') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Test Navigator</a>
                     </div>
                 </div>
             </div>

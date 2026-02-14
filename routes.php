@@ -3,20 +3,6 @@
 
 $router->get('/', 'HomeController@index');
 
-// Biblioteca
-$router->get('/libros', 'LibroController@index');
-$router->get('/libro', 'LibroController@show');
-$router->get('/libro/crear', 'LibroController@create');
-$router->post('/libro', 'LibroController@store');
-$router->delete('/libro', 'LibroController@destroy');
-
-// Autores
-$router->get('/autores', 'AutorController@index');
-$router->get('/autor', 'AutorController@show');
-$router->get('/autor/crear', 'AutorController@create');
-$router->post('/autor', 'AutorController@store');
-$router->delete('/autor', 'AutorController@destroy');
-
 // Pokémon (PokeAPI)
 $router->get('/pokemons', 'PokemonController@index');
 $router->get('/pokemon', 'PokemonController@show');
@@ -30,6 +16,9 @@ $router->get('/api/tests/search-pokemon', 'ApiTestsController@testSearchPokemon'
 $router->get('/api/tests/get-pokemons', 'ApiTestsController@testGetPokemons');
 $router->get('/api/tests/filter-by-type', 'ApiTestsController@testFilterByType');
 $router->get('/api/tests/get-all-types', 'ApiTestsController@testGetAllTypes');
+
+// Test navigator (manual test page)
+$router->get('/test-navigator', 'TestNavigatorController@index');
 
 // Auth routes
 //$router->get('/register', 'UserController@showRegisterForm');

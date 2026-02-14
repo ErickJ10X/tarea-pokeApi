@@ -38,8 +38,8 @@ Aplicación web desarrollada con arquitectura **MVC en PHP 8.4** que integra la 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/usuario/Docker-mvc-template.git
-cd Docker-mvc-template
+git clone https://github.com/usuario/tarea-pokeApi.git
+cd tarea-pokeApi
 ```
 
 ### 2. Instalar dependencias
@@ -54,21 +54,21 @@ composer install
 chmod -R 755 src/ public/
 ```
 
-### 4. Iniciar el servidor (desarrollo)
+### 4. Configurar variables de entorno
 
-**Opción A: Usar PHP Built-in Server**
 ```bash
-php -S localhost:8000 -t public/
+cp .env.example .env
 ```
 
-**Opción B: Con Docker**
+### 5. Iniciar el servidor (desarrollo)
+
 ```bash
 docker-compose up -d
 ```
 
-### 5. Acceder a la aplicación
+### 6. Acceder a la aplicación
 
-Abre tu navegador en: `http://localhost:8000`
+Abre tu navegador en: `http://localhost:8080`
 
 ## 📁 Estructura del Proyecto
 
@@ -128,25 +128,13 @@ Docker-mvc-template/
 
 ## 🚀 Funcionalidades
 
-### 1. Gestión de Libros
-- Listar todos los libros
-- Ver detalles de un libro
-- Crear nuevos libros
-- Eliminar libros
-
-### 2. Gestión de Autores
-- Listar todos los autores
-- Ver detalles de un autor
-- Crear nuevos autores
-- Eliminar autores
-
-### 3. Pokédex (PokeAPI) ⭐
+### 1. Pokédex (PokeAPI) ⭐
 - **Listar Pokémon**: Visualizar lista paginada de Pokémon
 - **Ver Detalles**: Información completa de cada Pokémon
 - **Buscar por Nombre**: Búsqueda interactiva por nombre
 - **Filtrar por Tipo**: Agrupar Pokémon por tipo (fuego, agua, etc.)
 
-### 4. Pruebas API 🧪
+### 2. Pruebas API 🧪
 - Página interactiva con 5 formularios de prueba
 - Endpoints JSON disponibles para consumo externo
 - Documentación de cada endpoint

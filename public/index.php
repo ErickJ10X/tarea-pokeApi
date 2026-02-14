@@ -13,6 +13,8 @@ require BASE_PATH . 'vendor/autoload.php';
 require BASE_PATH . 'Core/functions.php';
 
 $router = new Router();
+// Ensure the Router singleton is populated for other parts of the app
+Router::setInstance($router);
 require BASE_PATH . 'routes.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];

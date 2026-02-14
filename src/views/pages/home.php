@@ -5,7 +5,7 @@ ob_start();
 <div class="max-w-7xl mx-auto">
     <!-- Encabezado principal -->
     <div class="mb-12 text-center">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Bienvenido a Docker MVC Template</h1>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Bienvenido a PokeApi</h1>
         <p class="text-xl text-gray-600">
             Aplicación web demostrativa que integra gestión de datos con una API REST pública (PokeAPI)
         </p>
